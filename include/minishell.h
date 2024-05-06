@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:38:08 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/06 13:35:40 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/06 21:52:19 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ extern char **myenv;
 # include <stdlib.h>
 # include <string.h>
 # include <time.h>
-# include <limits.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
@@ -30,6 +29,7 @@ extern char **myenv;
 # include <signal.h>
 # include <dirent.h>
 # include "../Libft/libft.h"
+# include <limits.h>
 
 typedef enum s_token
 {
@@ -91,7 +91,7 @@ void printmyenv(void);
  char *findmyvar(char *va);
  void set_myenv(char *key, char *value);
  void my_cd(char **av);
-void change_mydir(char *path, int mypath);
+void change_mydir(char *path);
 void mypwd(void);
 //tools 
 void exiterror(void);

@@ -26,7 +26,7 @@ void ft_putendle(char *str, int fd)
     char	*tmp;
 
     if(!str)
-        return(NULL);
+        return ;
 	tmp = ft_strjoin(str, "\n");
 	ft_putstr_fd(tmp, fd);
 	free(tmp);

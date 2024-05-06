@@ -22,18 +22,18 @@ char *findmyvar(char *va)
 {
     int i = 0;
     char *tmp;
-    tmp = ft_strjoin(va, "=");
+    tmp = va;
         while(myenv[i])
         {
-            if(ft_strcmp(myenv[i], tmp) == 0)
+            char **vale = ft_split(myenv[i], '=');
+            if(ft_strcmp(vale[0], tmp) == 0)
             {
-                    free(tmp);
-                    return(ft_strchr(myenv[i], '=') + 1);
+                    return(ft_strchr(myenv[i], '=')) + 1;
             }
             i++;
         }
         free(tmp);
-        return(NULL);
+        return(0);
 }
 
 
@@ -91,7 +91,7 @@ void set_myenv(char *key, char *value)
 
     if(myenv[myi])
     {
-        free(myenv);
+        free(myenv[myi]);
         if(value)
             myenv[myi] = ft_strjoin(key, tmp);
         else

@@ -1,24 +1,34 @@
 #include "../include/minishell.h"
 
-void change_mydir(char *path, int mypath)
+void change_mydir(char *path)
 {
     char *cur;
-    char buffer[4097];
-    cur = getcwd(buffer, 4096);
-    if(!chdir(path))
+    char buffer[PATH_MAX];
+    cur = getcwd(buffer,PATH_MAX);
+
+    if(chdir(path) == 0)
 		set_myenv("OLDPWD", cur);
-    set_myenv("PWD", path);
+    else
+    {
+        perror("hna");
+        printf("l9lawi\n");
+    }
 
 }
 void my_cd(char **av)
 {
     char *myhome = findmyvar("HOME");
 
-    
-    if(!av[0])
-        change_mydir(myhome, 0);
+    if(av[1] == NULL || ft_strcmp(av[1], "") == 0)
+    {
+        printf("change to %s\n", myhome);
+        change_mydir(myhome);
+
+    }
     else 
-        change_mydir(av[0], 0);
+    {
+        change_mydir(av[1]);
+    }
 }
 
 void mypwd(void)
