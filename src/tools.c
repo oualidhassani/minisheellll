@@ -45,3 +45,27 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (0);
 }
+
+
+char **myrealloc(int size)
+{
+    char **new;
+    new = (char **)malloc(sizeof(char *) * (size + 1));
+
+    int i = 0;
+    while(size > i)
+    {
+        new[i] = NULL;
+        i++;
+    }
+    i = 0;
+
+    while(myenv[i] && i < size)
+    {
+        new[i] = ft_strdup(myenv[i]);
+        free(myenv[i]);
+        i++;
+    }
+    free(myenv);
+    return(new);
+}

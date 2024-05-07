@@ -8,25 +8,17 @@ void change_mydir(char *path)
 
     if(chdir(path) == 0)
 		set_myenv("OLDPWD", cur);
-    else
-    {
-        perror("hna");
-        printf("l9lawi\n");
-    }
-
+    set_myenv("PWD", path);
 }
 void my_cd(char **av)
 {
     char *myhome = findmyvar("HOME");
 
     if(av[1] == NULL || ft_strcmp(av[1], "") == 0)
-    {
-        printf("change to %s\n", myhome);
         change_mydir(myhome);
-
-    }
     else 
     {
+        printf("%s\n", "ana hna\n");
         change_mydir(av[1]);
     }
 }

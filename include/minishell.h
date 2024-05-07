@@ -97,4 +97,5 @@ void mypwd(void);
 void exiterror(void);
 int	ft_strcmp(const char *s1, const char *s2);
 void ft_putendle(char *str, int fd);
+char **myrealloc(int size);
 #endif

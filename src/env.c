@@ -5,9 +5,10 @@ int findmyindex(char *va)
     int i = 0;
     char *tmp;
     tmp = ft_strjoin(va, "=");
+    int len = ft_strlen(tmp);
         while(myenv[i])
         {
-            if(ft_strcmp(myenv[i], tmp) == 0)
+            if(ft_strncmp(myenv[i], tmp, len) == 0)
             {
                     free(tmp);
                     return(i);
@@ -88,7 +89,6 @@ void set_myenv(char *key, char *value)
 {
     int myi = findmyindex(key);
     char *tmp = ft_strjoin("=", value);
-
     if(myenv[myi])
     {
         free(myenv[myi]);
@@ -99,10 +99,11 @@ void set_myenv(char *key, char *value)
     }
     else
     {
-        myenv = (char **)malloc(myi + 1);
+        myenv = myrealloc(myi + 1);
         if(value)
             myenv[myi] = ft_strjoin(key, tmp);
         else
             myenv[myi] = ft_strjoin(key, "=");
     }
+    free(tmp);
 }
