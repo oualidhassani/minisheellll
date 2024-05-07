@@ -42,7 +42,7 @@ void my_cd(char **com)
 void mypwd(void)
 {
     char *cur;
-    char buffer[4097];
-    cur = getcwd(buffer, 4096);
+    char buffer[PATH_MAX];
+    cur = getcwd(buffer, PATH_MAX);
     printf("%s\n", cur);
 }
