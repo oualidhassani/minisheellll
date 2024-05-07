@@ -87,7 +87,7 @@ void	parsing(t_data *data);
 void    copieenv(char **env);
 void printmyenv(void);
  int lenofmyenv(char **env);
- void executing(char **av, char *str);
+ void executing(char *str);
  char *findmyvar(char *va);
  void set_myenv(char *key, char *value);
  void my_cd(char **av);

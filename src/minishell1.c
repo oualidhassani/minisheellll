@@ -5,8 +5,7 @@ int main(int ac, char **av, char **env)
    char *str;
 
 	if (ac != 1)
-		return (1);
-	(void)av;
+		exit(1);
 	copieenv(env);
     while (1)
     {
@@ -14,7 +13,7 @@ int main(int ac, char **av, char **env)
 		if (str == NULL)
 			break;
 		// parsing(&data);
-		executing(av, str);						// to do
+		executing(str);						// to do
 		// free(data.line);
 		// lstclear(&data.lst);
     }

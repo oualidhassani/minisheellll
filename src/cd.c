@@ -10,16 +10,17 @@ void change_mydir(char *path)
 		set_myenv("OLDPWD", cur);
     set_myenv("PWD", path);
 }
-void my_cd(char **av)
+
+
+void my_cd(char **com)
 {
     char *myhome = findmyvar("HOME");
 
-    if(av[1] == NULL || ft_strcmp(av[1], "") == 0)
+    if(com[1] == NULL)
         change_mydir(myhome);
-    else 
+    else
     {
-        printf("%s\n", "ana hna\n");
-        change_mydir(av[1]);
+        change_mydir(com[1]);
     }
 }
 

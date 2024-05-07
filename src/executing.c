@@ -1,11 +1,16 @@
 #include "../include/minishell.h"
 
-void executing(char **av, char *str)
+char **split_str(char *str)
 {
-    if(ft_strcmp(str, "cd") == 0)
-        my_cd(av);
-    if(ft_strcmp(str, "env") == 0)
+    return(ft_split(str, ' '));
+}
+void executing(char *str)
+{
+    char **com = split_str(str);
+    if(ft_strcmp(com[0], "cd") == 0)   
+        my_cd(com);
+    if(ft_strcmp(com[0], "env") == 0)
         printmyenv();
-    if(ft_strcmp(str, "pwd") == 0)
+    if(ft_strcmp(com[0], "pwd") == 0)
         mypwd();
 }
