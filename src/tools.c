@@ -69,3 +69,13 @@ char **myrealloc(int size)
     free(myenv);
     return(new);
 }
+
+char *ft_strncpy(char *dest, char *src, size_t n)
+{
+    while(*src && n--)
+        *dest = *src;
+    while(n--)
+        *dest = '\0';
+
+    return(dest); 
+}
