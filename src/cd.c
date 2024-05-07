@@ -18,7 +18,7 @@ void change_mydir(char *path)
     cur = getcwd(buffer,PATH_MAX);
 
     if(chdir(path) != 0)
-        perror("chdir");
+        perror("cd");
 	set_myenv("OLDPWD", cur);
     set_myenv("PWD", path);
 }
@@ -26,12 +26,14 @@ void change_mydir(char *path)
 
 void my_cd(char **com)
 {
-    char *myhome = findmyvar("HOME");
-
     int counter = morethan2arg(com);
     if(counter > 2)
-        perror("chdir");
-    if(com[1] == NULL)
+    {
+        ft_putstr_fd("cd: too many arguments", 1);
+        exit(1);
+    }
+    char *myhome = findmyvar("HOME");
+    if(com[1] == NULL || com[1][0] == '~')
         change_mydir(myhome);
     else
         change_mydir(com[1]);
