@@ -17,6 +17,8 @@ void executing(char *str)
         mypwd();
     if(ft_strcmp(com[0], "echo") == 0)
         ft_echo(com);
+    if(ft_strcmp(com[0], "export"))
+        export(com);
     // if(com[1] != NULL && ft_strcmp(com[1], "-n") == 0 && ft_strcmp(com[0], "echo") == 0);
     //     printf("ana dkhlt\n");
 }

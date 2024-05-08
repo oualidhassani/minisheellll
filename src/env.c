@@ -107,3 +107,15 @@ void set_myenv(char *key, char *value)
     }
     free(tmp);
 }
+
+void addnewenv(char *key, char *value)
+{
+    int myi = findmyindex(key);
+    
+    if(myi >= 0)
+        set_myenv(key, value);
+    // else
+    // {
+    //     myi = fi
+    // }
+}

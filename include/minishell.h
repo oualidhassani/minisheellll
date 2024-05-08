@@ -6,7 +6,7 @@
 /*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:38:08 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/07 19:58:32 by ohassani         ###   ########.fr       */
+/*   Updated: 2024/05/09 00:30:22 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void printmyenv(void);
 void change_mydir(char *path);
 void mypwd(void);
 void ft_echo(char **com);
-
+void addnewenv(char *key, char *value);
+void export(char **com);
 //tools 
 void exiterror(void);
 int	ft_strcmp(const char *s1, const char *s2);
