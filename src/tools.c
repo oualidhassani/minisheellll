@@ -79,3 +79,17 @@ char *ft_strncpy(char *dest, char *src, size_t n)
 
     return(dest); 
 }
+
+void	ft_putstrn_fd(char *s, int len, int fd)
+{
+	size_t	i;
+
+	if (fd < 0 || s == NULL)
+		return ;
+	i = 0;
+	while (i < len && s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+}

@@ -94,12 +94,11 @@ void printmyenv(void);
 void change_mydir(char *path);
 void mypwd(void);
 void ft_echo(char **com);
-char    *handle(char **com);
-char *sub(char **com);
 
 //tools 
 void exiterror(void);
 int	ft_strcmp(const char *s1, const char *s2);
 void ft_putendle(char *str, int fd);
 char **myrealloc(int size);
+void	ft_putstrn_fd(char *s, int len, int fd);
 #endif
