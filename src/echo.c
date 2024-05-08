@@ -10,8 +10,8 @@ void ft_echo(char **com)
         while(com[i])
         {
             len = ft_strlen(com[i]);
-            if(len >= 2 && com[i][0] == '"' && com[i][len - 1] == '"')
-                ft_putstrn_fd(com[i] + 1,len - 2, 1);
+            if(com[i][0] == '"' && com[i][len - 1] == '"')
+                ft_putstrn_fd(com[i] + 1 ,len - 2, 1);
             else
             {
                 ft_putstr_fd(com[i], 1);

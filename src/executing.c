@@ -7,11 +7,11 @@ char **split_str(char *str)
 void executing(char *str)
 {
     char **com = split_str(str);
-    if(com == NULL)
+    if(com[0] == NULL)
         return;
     if(ft_strcmp(com[0], "cd") == 0)   
         my_cd(com);
-    if(ft_strcmp(com[0], "env") == 0)
+    if(ft_strcmp(com[0], "env") == 0 && com[1] == NULL)
         printmyenv();
     if(ft_strcmp(com[0], "pwd") == 0)
         mypwd();
