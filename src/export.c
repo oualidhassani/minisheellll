@@ -12,7 +12,7 @@ void ft_putendexp(char *str, int fd)
 	free(tmp);
 }
 
-void swap(char *s1, char *s2)
+void swap(char **s1, char **s2)
 {
      char *tmp = *s1;
     *s1 = *s2;
@@ -30,7 +30,7 @@ void sortexport(char **arr, int n)
         int j = 0;
         while(j < n  - i - 1)
         {
-            if(comparestring(arr[j], arr[j + 1]))
+            if(comparestring(arr[j], arr[j + 1]) > 0)
                 swap(&arr[j], &arr[j + 1]);
             j++;
         }
