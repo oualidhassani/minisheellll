@@ -6,7 +6,7 @@
 /*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:38:08 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/09 00:30:22 by ohassani         ###   ########.fr       */
+/*   Updated: 2024/05/14 09:46:00 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void mypwd(void);
 void ft_echo(char **com);
 void addnewenv(char *key, char *value);
 void export(char **com);
+void ft_echo_n(char **com);
+
 //tools 
 void exiterror(void);
 int	ft_strcmp(const char *s1, const char *s2);
