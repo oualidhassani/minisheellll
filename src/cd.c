@@ -46,3 +46,25 @@ void mypwd(void)
     cur = getcwd(buffer, PATH_MAX);
     printf("%s\n", cur);
 }
+
+
+void exit_myminishell(char **com)
+{
+    int a;
+    if(com[1] == NULL)
+        exit(0);
+    if(ft_isdigit(com[1][0]) == 1)
+    {
+        a = com[1][0]; 
+        if(a == '1')
+            exit(1);
+        else if(a == '0')
+            exit(0);
+    }
+    else
+    {
+        ft_putstr_fd(com[1], 1);
+        printf("%s",": numeric argument required\n");
+        exit(1);
+    }
+}

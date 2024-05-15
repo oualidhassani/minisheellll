@@ -22,6 +22,8 @@ void executing(char *str)
         else
             ft_echo(com);
     }
-    if(ft_strcmp(com[0], "export") == 0 )
+    if(ft_strcmp(com[0], "export") == 0)
         export(com);
+    if(ft_strcmp(com[0], "exit") == 0)
+        exit_myminishell(com);
 }
