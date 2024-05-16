@@ -60,8 +60,11 @@ void export(char **com)
 {
     if(com[1] == NULL)
         printmyexport();
-    // else
-    //     {
-    //         addnewenv()
-    //     }
+    int i = 1;
+    while(com[i])
+    {
+        char **export = ft_split(com[i], '=');
+        i++;
+        set_myenv(export[0], export[1]);
+    }
 }
