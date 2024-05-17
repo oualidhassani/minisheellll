@@ -27,8 +27,8 @@ void ft_echo_n(char **com)
     {
         while(com[++i])
         {
-                ft_putstr_fd(com[i], 1);
-                ft_putchar_fd(' ', 1);
+            ft_putstr_fd(com[i], 1);
+            ft_putchar_fd(' ', 1);
         }
     }
 }

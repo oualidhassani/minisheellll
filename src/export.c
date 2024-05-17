@@ -42,14 +42,12 @@ void printmyexport()
     int		i;
 
 	i = 0;
-    
     while(myenv[i])
         i++;
     sortexport(myenv, i);
 
-
     int j = 0;
-	while (i > j)
+	while (myenv[j])
     {
 		ft_putendexp(myenv[j], 1);
         j++;
@@ -58,13 +56,13 @@ void printmyexport()
 
 void export(char **com)
 {
-    if(com[1] == NULL)
-        printmyexport();
     int i = 1;
     while(com[i])
     {
         char **export = ft_split(com[i], '=');
-        i++;
         set_myenv(export[0], export[1]);
+        i++;
     }
+    if(com[1] == NULL)
+        printmyexport();
 }
