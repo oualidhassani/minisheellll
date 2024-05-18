@@ -9,7 +9,6 @@ void unset_env(char **com)
     while(com[i])
     {
         j  = findmyindex(com[i]);
-        printf("%d\n" ,j);
         if(j > 0)
         {
             free(myenv[j]);
@@ -18,3 +17,21 @@ void unset_env(char **com)
         i++;
     }
 }
+
+
+void handle_envi(char **com)
+{
+    int i = 0;
+    char *val;
+    if(com[0][i] == '$')
+    {
+        i++;
+        val = com[0];
+    }   
+
+    printf("%s\n", com[0]);
+    // int j = findmyindex(com[1][0]);
+
+
+}
+   
