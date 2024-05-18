@@ -89,6 +89,10 @@ void set_myenv(char *key, char *value)
 {
     int myi = findmyindex(key);
     char *tmp = ft_strjoin("=", value);
+    int i = 0;
+
+    while (myenv[i])
+        i++;
     if(myi != 0)
     {
         free(myenv[myi]);
@@ -99,32 +103,12 @@ void set_myenv(char *key, char *value)
     }
     else
     {
-        myenv = myrealloc(myi + 1);
+        myenv = (char **)realloc(myenv, (sizeof(char *) * i) + 8);
         if(value)
-            myenv[myi] = ft_strjoin(key, tmp);
+            myenv[i - 1] = ft_strjoin(key, tmp);
         else
-            myenv[myi] = ft_strjoin(key, "=");
+            myenv[i - 1] = ft_strjoin(key, "=");
+        myenv[i] = NULL;
     }
     free(tmp);
 }
-
-// void addnewenv(char *key, char *value)
-// {
-//     int myi = findmyindex(key);
-//     int lenkey = ft_strlen(key);
-//     int lenval = ft_strlen(value);
-//     int tot = lenkey + lenval + 1;
-//     char *newenv;
-//     if(myi >= 0)
-//         set_myenv(key, value);
-//     else
-//     {
-//         myenv = myrealloc(tot * sizeof(char));
-//         if(value)
-//             newenv = ft_strjoin(key, value);
-//         else
-//             newenv = ft_strjoin(key, value);       
-//     }
-//     myenv[myi] = newenv;
-//     myi++;
-// }
