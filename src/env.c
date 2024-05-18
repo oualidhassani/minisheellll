@@ -87,6 +87,7 @@ void  copieenv(char **env)
 
 void set_myenv(char *key, char *value)
 {
+        printf("i enter here\n");
     int myi = findmyindex(key);
     char *tmp = ft_strjoin("=", value);
     int i = 0;

@@ -64,8 +64,6 @@ void export(char **com)
     while(com[i])
     {
         char **export = ft_split(com[i], '=');
-        if(!export || !export[0] || !export[1])
-            return;
         set_myenv(export[0], export[1]);
         i++;
     }
