@@ -87,7 +87,6 @@ void  copieenv(char **env)
 
 void set_myenv(char *key, char *value)
 {
-        printf("i enter here\n");
     int myi = findmyindex(key);
     char *tmp = ft_strjoin("=", value);
     int i = 0;
@@ -108,7 +107,7 @@ void set_myenv(char *key, char *value)
         if(value)
             myenv[i - 1] = ft_strjoin(key, tmp);
         else
-            myenv[i - 1] = ft_strjoin(key, "=");
+            myenv[i - 1] = ft_strjoin(key, "= "" ");
         myenv[i] = NULL;
     }
     free(tmp);

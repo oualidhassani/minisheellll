@@ -26,4 +26,6 @@ void executing(char *str)
         export(com);
     if(ft_strcmp(com[0], "exit") == 0)
         exit_myminishell(com);
+    if(ft_strcmp(com[0], "unset") == 0)
+        unset_env(com);
 }

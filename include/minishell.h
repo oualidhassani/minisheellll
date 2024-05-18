@@ -6,7 +6,7 @@
 /*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:38:08 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/15 19:32:29 by ohassani         ###   ########.fr       */
+/*   Updated: 2024/05/18 19:21:42 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ void addnewenv(char *key, char *value);
 void export(char **com);
 void ft_echo_n(char **com);
 void exit_myminishell(char **com);
+void unset_env();
 
 //tools 
 void exiterror(void);
@@ -105,4 +106,5 @@ int	ft_strcmp(const char *s1, const char *s2);
 void ft_putendle(char *str, int fd);
 char **myrealloc(int size);
 void	ft_putstrn_fd(char *s, int len, int fd);
+int findmyindex(char *va);
 #endif
