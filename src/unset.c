@@ -23,15 +23,22 @@ void handle_envi(char **com)
 {
     int i = 0;
     char *val;
+    int j = 0;
     if(com[0][i] == '$')
     {
         i++;
-        val = com[0];
-    }   
+        val = (char *)malloc(ft_strlen(com[0]) + 1);
+        while(com[0][i])
+        {
+            val[j] = com[0][i];
+            i++;
+            j++;
+            printf("===========>%c\n", val[j]);
+        }
+    }
+    // val[j] = '\0';
+    int b = findmyindex(val);
 
-    printf("%s\n", com[0]);
-    // int j = findmyindex(com[1][0]);
-
+    printf("%d\n", b);
 
 }
-   
