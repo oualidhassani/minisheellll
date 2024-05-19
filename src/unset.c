@@ -25,24 +25,22 @@ void handle_envi(char **com)
     int j = 0;
     char * val;
     val = NULL;
-    if(com[0] && com[0][i] == '$')
+    int k = 1;
+    while(com[k] && com[k][i] == '$')
     {
         i++;
-        val = malloc(sizeof(char)  * ft_strlen(com[0]));
-        while(com[0][i])
+        val = malloc(sizeof(char)  * ft_strlen(com[k]));
+        while(com[k][i])
         {
-            val[j] = com[0][i];
+            val[j] = com[k][i];
             i++;
             j++;
         }
         val[j] = '\0';
-
-    char *b = findmyvar(val);
-
+        char *b = findmyvar(val);
         if(b != 0)
-        {
             printf("%s\n", b);
-        }
+        k++;
     }
 
 }

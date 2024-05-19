@@ -9,7 +9,8 @@ void executing(char *str)
     char **com = split_str(str);
     if(com[0] == NULL)
         return;
-    handle_envi(com);
+    // if(com[1][0] == '$')
+    //     handle_envi(com);
     if(ft_strcmp(com[0], "cd") == 0)   
         my_cd(com);
     if(ft_strcmp(com[0], "env") == 0 && com[1] == NULL)
