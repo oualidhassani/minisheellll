@@ -7,17 +7,18 @@ void ft_echo(char **com)
         ft_putchar_fd('\n', 1);
     else
     {
-        while(com[i])
+        if(com[i][0] == '$')
+            handle_envi(com);
+        else
         {
-            if(com[i][0] == '$')
-                handle_envi(com);
-            else
+            printf("i enter here\n");
+            while(com[i])
             {
-                ft_putstr_fd(com[i], 1);
-                ft_putchar_fd(' ', 1);
+                    ft_putstr_fd(com[i], 1);
+                    ft_putchar_fd(' ', 1);
+                i++;
+            // printf("%d\n", i);
             }
-            i++;
-            printf("im here \n");
         }
     }
         printf("\n");

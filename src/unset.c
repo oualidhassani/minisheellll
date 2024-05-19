@@ -21,26 +21,38 @@ void unset_env(char **com)
 
 void handle_envi(char **com)
 {
-    int i = 0;
-    int j = 0;
-    char * val;
-    val = NULL;
     int k = 1;
-    while(com[k] && com[k][i] == '$')
+    while(com[k])
     {
-        i++;
-        val = malloc(sizeof(char)  * ft_strlen(com[k]));
-        while(com[k][i])
+        int i = 0;
+        while (com[k][i] == '$')
+        {
+            i++;
+        }
+
+        int len = ft_strlen(com[k]);
+        char *val = malloc(sizeof(char) * (len + 1));
+        if (val == NULL)
+        {
+            printf("Memory allocation failed\n");
+            exit(1);
+        }
+
+        int j = 0;
+        while (com[k][i])
         {
             val[j] = com[k][i];
             i++;
             j++;
         }
         val[j] = '\0';
-        char *b = findmyvar(val);
-        if(b != 0)
-            printf("%s\n", b);
-        k++;
-    }
 
+        k++;
+        // printf("%s\n", val);
+        char *b = findmyvar(val);
+        if (b > 0)
+            printf("%s\n", b);        
+    }
 }
+
+
