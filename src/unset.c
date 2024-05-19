@@ -22,23 +22,27 @@ void unset_env(char **com)
 void handle_envi(char **com)
 {
     int i = 0;
-    char *val;
     int j = 0;
-    if(com[0][i] == '$')
+    char * val;
+    val = NULL;
+    if(com[0] && com[0][i] == '$')
     {
         i++;
-        val = (char *)malloc(ft_strlen(com[0]) + 1);
+        val = malloc(sizeof(char)  * ft_strlen(com[0]));
         while(com[0][i])
         {
             val[j] = com[0][i];
             i++;
             j++;
-            printf("===========>%c\n", val[j]);
+        }
+        val[j] = '\0';
+
+    char *b = findmyvar(val);
+
+        if(b != 0)
+        {
+            printf("%s\n", b);
         }
     }
-    // val[j] = '\0';
-    int b = findmyindex(val);
-
-    printf("%d\n", b);
 
 }

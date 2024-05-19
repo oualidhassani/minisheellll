@@ -1,6 +1,7 @@
 #include "../include/minishell.h"
 
 char **myenv;
+
 void free2array(char **str)
 {
     if(!str)
@@ -26,7 +27,7 @@ void ft_putendle(char *str, int fd)
     char	*tmp;
 
     if(!str)
-        return ;
+        return;
 	tmp = ft_strjoin(str, "\n");
 	ft_putstr_fd(tmp, fd);
 	free(tmp);
@@ -80,7 +81,7 @@ char *ft_strncpy(char *dest, char *src, size_t n)
     return(dest); 
 }
 
-void	ft_putstrn_fd(char *s, int len, int fd)
+void	ft_putstrn_fd(char *s, size_t len, int fd)
 {
 	size_t	i;
 

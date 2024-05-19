@@ -6,7 +6,7 @@
 /*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:38:08 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/18 22:46:27 by ohassani         ###   ########.fr       */
+/*   Updated: 2024/05/19 12:17:21 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void exiterror(void);
 int	ft_strcmp(const char *s1, const char *s2);
 void ft_putendle(char *str, int fd);
 char **myrealloc(int size);
-void	ft_putstrn_fd(char *s, int len, int fd);
+void	ft_putstrn_fd(char *s, size_t len, int fd);
 int findmyindex(char *va);
 void handle_envi(char **com);
 #endif

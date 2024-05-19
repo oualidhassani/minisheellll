@@ -2,7 +2,6 @@
 
 int main(int ac, char **av, char **env)
 {
-   char *str;
 
 	if (ac != 1)
 		exit(1);

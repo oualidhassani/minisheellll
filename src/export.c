@@ -63,6 +63,8 @@ void export(char **com)
         printmyexport();
     while(com[i])
     {
+        if(ft_isalpha(com[i][0]) != 1)
+            printf("export: '%s' :not a valid identifier\n", com[i]);
         char **export = ft_split(com[i], '=');
         set_myenv(export[0], export[1]);
         i++;
