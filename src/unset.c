@@ -19,40 +19,41 @@ void unset_env(char **com)
 }
 
 
-void handle_envi(char **com)
-{
-    int k = 1;
-    while(com[k])
-    {
-        int i = 0;
-        while (com[k][i] == '$')
-        {
-            i++;
-        }
+// void handle_envi(char **com)
+// {
+//     int k = 1;
+//     while(com[k])
+//     {
+//         int i = 0;
+//         if(com[k][i] != '$')
+//             break;
+//         while (com[k][i] == '$')
+//             i++;
 
-        int len = ft_strlen(com[k]);
-        char *val = malloc(sizeof(char) * (len + 1));
-        if (val == NULL)
-        {
-            printf("Memory allocation failed\n");
-            exit(1);
-        }
+//         int len = ft_strlen(com[k]);
+//         char *val = malloc(sizeof(char) * (len + 1));
+//         if (val == NULL)
+//         {
+//             printf("Memory allocation failed\n");
+//             exit(1);
+//         }
 
-        int j = 0;
-        while (com[k][i])
-        {
-            val[j] = com[k][i];
-            i++;
-            j++;
-        }
-        val[j] = '\0';
-
-        k++;
-        // printf("%s\n", val);
-        char *b = findmyvar(val);
-        if (b > 0)
-            printf("%s\n", b);        
-    }
-}
+//         int j = 0;
+//         while (com[k][i])
+//         {
+//             val[j] = com[k][i];
+//             i++;
+//             j++;
+//         }
+//         val[j] = '\0';
+//         printf("the k index ======>%d\n", k);
+//         k++;
+//         // printf("%s\n", val);
+//         char *b = findmyvar(val);
+//         printf()
+//         if (b > 0)
+//             printf("%s ", b);
+//     }
+// }
 
 

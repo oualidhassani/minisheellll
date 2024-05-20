@@ -8,6 +8,7 @@ int main(int ac, char **av, char **env)
 	copieenv(env);
     while (1)
     {
+		//ADD HISTORY
 		char *str = readline("minishell$ ");
 		if (str == NULL)
 			break;
