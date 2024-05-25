@@ -4,6 +4,7 @@ char **split_str(char *str)
 {
     return(ft_split(str, ' '));
 }
+
 void executing(char *str, char **av)
 {
     char **com = split_str(str);
@@ -30,10 +31,9 @@ void executing(char *str, char **av)
         exit_myminishell(com);
     else if(ft_strcmp(com[0], "unset") == 0)
         unset_env(com);
-    else
-    {
+    // else
+    // {
         // printf("i enter here\n");
         // printf("%s\n", com[0]);
-        execute_command(com[0], com);
-    }
+    // }
 }

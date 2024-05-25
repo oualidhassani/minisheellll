@@ -2,7 +2,7 @@ NAME = minishell
 
 CC = cc
 
-CFLAGS = -Wall  -Wextra -ggdb3 -lreadline -g3 -fsanitize=address #-Werror -v
+CFLAGS = -Wall  -Wextra -ggdb3 -lreadline  #-fsanitize=address #-Werror -v
 
 SRCS =    src/exec_command.c src/unset.c src/export.c src/echo.c src/cd.c src/executing.c src/tools.c src/env.c src/minishell1.c  Libft/ft_split.c Libft/ft_putstr_fd.c\
 		 Libft/ft_isdigit.c Libft/ft_strjoin.c Libft/ft_strdup.c Libft/ft_strlen.c\

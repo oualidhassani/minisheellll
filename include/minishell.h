@@ -6,7 +6,7 @@
 /*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:38:08 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/19 12:17:21 by ohassani         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:21:00 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void export(char **com);
 void ft_echo_n(char **com);
 void exit_myminishell(char **com);
 void unset_env();
-void execute_command(char *path, char **com);
+void execute_command(char **com);
 
 //tools 
 void exiterror(void);
@@ -109,4 +109,7 @@ char **myrealloc(int size);
 void	ft_putstrn_fd(char *s, size_t len, int fd);
 int findmyindex(char *va);
 void handle_envi(char **com);
+char    **split_str(char *str);
+char *get_my_path(char **com);
+void free2array(char **str);
 #endif

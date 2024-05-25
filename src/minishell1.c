@@ -11,8 +11,11 @@ int main(int ac, char **av, char **env)
 		char *str = readline("minishell$ ");
 		if (str == NULL)
 			break;
+		char **com = split_str(str);
 		// parsing(&data);
 		executing(str, av);						// to do
+		execute_command(com);
+		// get_my_path();
 		// free(data.line);
 		// lstclear(&data.lst);
     }
