@@ -11,6 +11,7 @@ int main(int ac, char **av, char **env)
 		char *str = readline("minishell$ ");
 		if (str == NULL)
 			break;
+		add_history(str);
 		char **com = split_str(str);
 		// parsing(&data);
 		executing(str, av);						// to do

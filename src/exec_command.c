@@ -4,16 +4,11 @@ char *get_my_path(char **com)
 {
     char *path1 = findmyvar("PATH");
     if (!path1) 
-    {
-        printf("PATH variable not found\n");
         return NULL;
-    }
 
     char **str = ft_split(path1, ':');
-    if (!str) {
-        printf("Failed to split PATH\n");
+    if (!str)
         return NULL;
-    }
 
     int i = 0;
     char *mypath = NULL;
@@ -24,8 +19,8 @@ char *get_my_path(char **com)
         char *command_path = ft_strjoin(joiner, com[0]);
         free(joiner);
 
-        if (!command_path) 
-            printf("Memory allocation failed\n");
+        // if (!command_path) 
+        //     printf("Memory allocation failed\n");
 
         if (access(command_path, X_OK) == 0) 
         {
