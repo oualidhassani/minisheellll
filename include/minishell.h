@@ -87,7 +87,7 @@ void	parsing(t_data *data);
 void    copieenv(char **env);
 void printmyenv(void);
  int lenofmyenv(char **env);
- void executing(char *str);
+ void executing(char *str, char **av);
  char *findmyvar(char *va);
  void set_myenv(char *key, char *value);
  void my_cd(char **av);
@@ -99,6 +99,7 @@ void export(char **com);
 void ft_echo_n(char **com);
 void exit_myminishell(char **com);
 void unset_env();
+void execute_command(char *path, char **com);
 
 //tools 
 void exiterror(void);
