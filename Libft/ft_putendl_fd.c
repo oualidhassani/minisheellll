@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 11:28:40 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/07 11:34:44 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/04 10:51:01 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/16 18:39:27 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,13 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-
-	if (fd < 0 || s == NULL)
-		return ;
-	i = 0;
-	while (s[i] != '\0')
+	if (fd >= 0 && s != NULL)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		while (*s)
+		{
+			ft_putchar_fd(*s, fd);
+			s++;
+		}
+		ft_putchar_fd('\n', fd);
 	}
-	write(fd, "\n", 1);
 }
-
-// int main ()
-// {
-//     char *d = "ouaolidf";
-//     ft_putendl_fd(d, 1);
-// }

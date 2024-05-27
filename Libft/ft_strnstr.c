@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:31:32 by ohassani          #+#    #+#             */
-/*   Updated: 2024/05/06 21:36:20 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/01 12:11:30 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/10 16:26:38 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	j;
+	size_t	needle_len;
 
-	i = 0;
-	if (!big && len == 0)
-		return (NULL);
-	if (little == big)
+	needle_len = ft_strlen(little);
+	if (needle_len == 0)
 		return ((char *)big);
-	while (big[i] != '\0')
+	if (*big == '\0' || len < needle_len)
+		return (NULL);
+	while (*big != '\0' && len >= needle_len)
 	{
-		j = 0;
-		while (big[i + j] && little[j] && big[i + j] == little[j] && i + j < len)
-			j++;
-		if (little[j] == '\0')
-			return ((char *)(big + i));
-		i++;
+		if (ft_strncmp(big, little, needle_len) == 0)
+			return ((char *)big);
+		big++;
+		len--;
 	}
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:30:58 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/10 21:01:27 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/01 10:42:46 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/18 10:14:59 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,15 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-
-	i = 0;
-	while (n > 0 && (s1[i] || s2[i]))
+	while (n > 0)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
+		if (*s1 != *s2)
+			return ((unsigned char)(*s1) - (unsigned char)(*s2));
+		if (*s1 == '\0' && *s2 == '\0')
+			break ;
+		s1++;
+		s2++;
 		n--;
 	}
 	return (0);
 }
-// #include <string.h>
-//   int main()
-// {
-//   char s[] = "test";   char d[] = "testss";
-//    printf("%d\n",strncmp(s, d, 7));
-//     printf("%d", ft_strncmp(s, d, 7));
-// }

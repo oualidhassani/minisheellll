@@ -3,41 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:30:18 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/06 21:30:19 by ohassani         ###   ########.fr       */
+/*   Created: 2023/10/31 11:58:10 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/16 11:24:24 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
+	unsigned char		*ptr1;
+	const unsigned char	*ptr2;
 	size_t				i;
-	unsigned char		*dtr;
-	const unsigned char	*str;
 
 	i = 0;
-	if (dst == NULL && src == NULL)
+	if (dest == NULL && src == NULL)
 		return (NULL);
-	if (dst == src)
-		return (dst);
-	dtr = (unsigned char *)dst;
-	str = (const unsigned char *)src;
-	while (n > 0)
+	if (dest == src)
+		return ((void *)src);
+	ptr1 = (unsigned char *)dest;
+	ptr2 = (const unsigned char *)src;
+	while (i < n)
 	{
-		dtr[i] = str[i];
+		ptr1[i] = ptr2[i];
 		i++;
-		n--;
 	}
-	return (dtr);
+	return (dest);
 }
-
-// #include <string.h>
-
-// int	main(void)
-// {
-// 	memcpy("NULL", "NULL", 3);
-// 	// printf("%s\n%s\n",p, q);
-// }

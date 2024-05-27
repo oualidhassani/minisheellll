@@ -3,62 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 12:06:15 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/10 16:52:09 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/03 09:40:31 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/06 11:21:20 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	positive(int n)
+static char	*fill(char *ptr, long n, int x)
 {
+	int	i;
+
+	i = n;
 	if (n < 0)
-		return (-n);
-	return (n);
+		n *= -1;
+	if (x >= 0)
+	{
+		ptr[x] = (n % 10) + '0';
+		n /= 10;
+		fill(ptr, n, --x);
+	}
+	if (i < 0)
+		ptr[0] = '-';
+	return (ptr);
 }
 
-int	counter(int n)
+static void	nor_line(int *n, int *x)
 {
-	int	digit;
-
-	digit = 0;
-	if (n <= 0)
-		digit++;
-	while (n != 0)
+	if (*n < 0)
 	{
-		n = n / 10;
-		digit++;
+		*x += 1;
+		*n *= -1;
 	}
-	return (digit);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*ptr;
-	long int	i;
+	char	*ptr;
+	long	i;
+	int		x;
 
-	i = counter(n);
-	ptr = malloc(i + 1);
-	if (ptr == NULL)
-		return (NULL);
-	ptr[i] = '\0';
-	if (n < 0)
-		ptr[0] = '-';
-	else if (n == 0)
-		ptr[0] = '0';
+	x = 0;
+	i = n;
+	nor_line(&n, &x);
+	n /= 10;
+	x++;
 	while (n != 0)
 	{
-		i--;
-		ptr[i] = positive(n % 10) + 48;
-		n = n / 10;
+		n /= 10;
+		x++;
 	}
-	return (ptr);
+	ptr = (char *)malloc((x + 1) * sizeof(char));
+	if (ptr == NULL)
+		return (NULL);
+	ptr[x] = '\0';
+	x--;
+	return (fill(ptr, i, x));
 }
-
-// int main ()
-// {
-//   char *res = ft_itoa(0);
-//   printf("%s", res);
-// }

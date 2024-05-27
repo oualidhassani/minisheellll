@@ -3,46 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:30:28 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/10 20:59:58 by ohassani         ###   ########.fr       */
+/*   Created: 2023/10/31 12:29:48 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/05 16:40:05 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(const void *dest, const void *src, size_t n)
+static void	ben10(size_t n, unsigned char *ptr1, const unsigned char *ptr2)
 {
-	size_t			i;
-	unsigned char	*ptr;
-	unsigned char	*s;
-
-	i = 0;
-	ptr = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	if (dest > src)
+	while (n > 0)
 	{
+		*ptr1 = *ptr2;
+		ptr1++;
+		ptr2++;
+		n--;
+	}
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char		*ptr1;
+	const unsigned char	*ptr2;
+
+	ptr1 = (unsigned char *)dest;
+	ptr2 = (const unsigned char *)src;
+	if (ptr1 == ptr2)
+		return (dest);
+	else if (ptr1 < ptr2)
+		ben10(n, ptr1, ptr2);
+	else
+	{
+		ptr1 += n - 1;
+		ptr2 += n - 1;
 		while (n > 0)
 		{
-			ptr[n - 1] = s[n - 1];
+			*ptr1 = *ptr2;
+			ptr1--;
+			ptr2--;
 			n--;
 		}
 	}
-	else
-	{
-		ft_memcpy(ptr, s, n);
-	}
-	return (ptr);
+	return (dest);
 }
-// #include <string.h>
-// #include<stdio.h>
-// int	main(void)
-// {
-// 	char	*d = "sert9wd";
-// 	char	*s = "sert9wd";
-
-// 	printf("%s", ft_memmove(d, s, 4));
-// }

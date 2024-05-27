@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:30:38 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/10 21:00:20 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/01 19:47:38 by ksohail-          #+#    #+#             */
+/*   Updated: 2024/05/25 11:30:01 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,24 @@
 
 char	*ft_strdup(const char *s)
 {
-	size_t	i;
-	size_t	len;
-	char	*copie;
+	char	*ptr;
+	int		i;
+	int		k;
+	int		len;
 
-	i = 0;
 	len = ft_strlen(s);
-	copie = (char *)malloc((len + 1) * sizeof(char));
-	if (copie == NULL)
+	i = 0;
+	k = 0;
+	ptr = (char *)malloc((len + 1) * sizeof(char));
+	if (ptr == NULL)
 		return (NULL);
-	while (len > i)
+	while (i < len)
 	{
-		copie[i] = s[i];
+		ptr[i] = s[k];
 		i++;
+		k++;
 	}
-	copie[i] = '\0';
-	return (copie);
+	ptr[i] = '\0';
+	// free((char *)s);
+	return (ptr);
 }
-
-//  int main ()
-//  {
-//    const char s[] = "oualid";
-//    printf("%s\n",ft_strdup(s));
-//    printf("%s",strdup(s));
-//  }

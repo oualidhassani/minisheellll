@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 20:37:59 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/27 13:05:09 by ksohail-         ###   ########.fr       */
+/*   Created: 2024/04/27 14:11:49 by ksohail-          #+#    #+#             */
+/*   Updated: 2024/05/27 15:34:47 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/minishell.h"
 
-int	ft_isalnum(int c)
+char **myenv = NULL;
+
+int main(int ac, char **av, char **env)
 {
-	if ((c >= 'A' && c < 'Z' + 1) || (c >= 'a' && c <= 'z') || c == '_')
+    t_data data;
+
+	if (ac != 1)
 		return (1);
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+		
+	copieenv(env);
+	(void)av;
+	// data.env = env;
+    while (1)
+    {
+		data.line = readline("minishell$ ");
+		if (!data.line)
+			break ;
+		else if (check_quotation(data.line) != -1)
+		{
+			add_history(data.line);
+			parsing(&data);
+		}
+		free(data.line);
+    }
+	printf("\n");
+    return (0);
 }

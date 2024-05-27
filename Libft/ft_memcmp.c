@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 16:25:51 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/10 20:59:51 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/01 11:29:47 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/06 18:21:49 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,18 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*str;
-	const unsigned char	*ptr;
+	const unsigned char	*ptr1;
+	const unsigned char	*ptr2;
 
-	str = (const unsigned char *)s1;
-	ptr = (const unsigned char *)s2;
-	while (n-- > 0)
+	ptr1 = (const unsigned char *)s1;
+	ptr2 = (const unsigned char *)s2;
+	while (n > 0)
 	{
-		if (*str != *ptr)
-			return (*str - *ptr);
-		str++;
-		ptr++;
+		if (*ptr1 != *ptr2)
+			return ((unsigned char)(*ptr1) - (unsigned char)(*ptr2));
+		ptr1++;
+		ptr2++;
+		n--;
 	}
 	return (0);
 }
-
-//  int main ()
-//  {
-//     char s[] = "oualid";
-//     char d[] = "ouadid";
-//     printf("%d\n",ft_memcmp(s, d, 6));
-//     printf("%d", memcmp(s, d, 6));
-//  }

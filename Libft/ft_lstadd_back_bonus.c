@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksohail- <ksohail-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 11:17:54 by ksohail-          #+#    #+#             */
-/*   Updated: 2023/11/16 18:39:07 by ksohail-         ###   ########.fr       */
+/*   Created: 2023/11/04 16:06:10 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/17 13:32:36 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (fd >= 0 && s != NULL)
+	t_list	*curr;
+
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
 	{
-		while (*s)
-		{
-			ft_putchar_fd(*s, fd);
-			s++;
-		}
+		*lst = new;
+		return ;
 	}
+	curr = ft_lstlast(*lst);
+	curr->next = new;
 }

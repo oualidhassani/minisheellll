@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 21:29:58 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/12 14:37:53 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/01 20:45:57 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/12 14:33:21 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,22 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
+	size_t	i;
 	void	*ptr;
 
-	if (size != 0 && nmemb > SIZE_MAX / size)
+	if (size != 0 && nmemb > ((size_t) -1 / size))
 		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
+	ptr = (void *)malloc(nmemb * size);
+	if (ptr == NULL)
 		return (NULL);
 	else
-		ft_bzero(ptr, nmemb * size);
+	{
+		i = 0;
+		while (i < nmemb * size)
+		{
+			*((char *)ptr + i) = 0;
+			i++;
+		}
+	}
 	return (ptr);
 }
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	char *str = ft_calloc(0, 0);
-// 	printf("%d\n", *str);
-// 	printf("%s", str);
-// }

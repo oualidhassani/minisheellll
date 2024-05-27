@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 11:49:51 by ksohail-          #+#    #+#             */
-/*   Updated: 2023/11/10 16:17:56 by ksohail-         ###   ########.fr       */
+/*   Created: 2024/05/17 14:15:37 by ksohail-          #+#    #+#             */
+/*   Updated: 2024/05/17 14:15:42 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*ptr;
-	int		len;
+	t_list	*n_list;
+	t_list	*new;
+	void	*content_res;
 
-	if (s == NULL || f == NULL)
+	n_list = NULL;
+	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	len = ft_strlen(s);
-	if (*s == '\0')
-		return (ft_strdup(""));
-	ptr = (char *)malloc((len + 1) * sizeof(char));
-	if (ptr == NULL)
-		return (NULL);
-	ptr[len] = '\0';
-	len--;
-	while (len >= 0)
+	while (lst != NULL)
 	{
-		ptr[len] = f(len, s[len]);
-		len--;
+		content_res = f(lst->content);
+		new = ft_lstnew(content_res);
+		if (new == NULL)
+		{
+			free(content_res);
+			free(new);
+			ft_lstclear(&n_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&n_list, new);
+		lst = lst->next;
 	}
-	return (ptr);
+	return (n_list);
 }

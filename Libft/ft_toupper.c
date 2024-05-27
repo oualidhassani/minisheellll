@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksohail- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 16:27:07 by ohassani          #+#    #+#             */
-/*   Updated: 2023/11/10 21:02:24 by ohassani         ###   ########.fr       */
+/*   Created: 2023/11/01 19:10:50 by ksohail-          #+#    #+#             */
+/*   Updated: 2023/11/06 11:16:29 by ksohail-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,7 @@
 
 int	ft_toupper(int c)
 {
-	if (c > 96 && c < 123)
-	{
-		return (c -= 32);
-	}
-	else
-		return (c);
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }
-/*int main ()
-{
-	char c = "c";
-	printf("%c\n", ft_toupper(c));
-}*/
