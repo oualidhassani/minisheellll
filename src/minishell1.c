@@ -16,6 +16,7 @@ int main(int ac, char **av, char **env)
 		// parsing(&data);
 		executing(str, av);						// to do
 		execute_command(com);
+		ft_pipe(com);
 		// get_my_path();
 		// free(data.line);
 		// lstclear(&data.lst);

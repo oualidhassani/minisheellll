@@ -6,7 +6,7 @@
 /*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:38:08 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/25 20:21:00 by ohassani         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:31:07 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void ft_echo_n(char **com);
 void exit_myminishell(char **com);
 void unset_env();
 void execute_command(char **com);
+void ft_pipe(char **com);
 
 //tools 
 void exiterror(void);

@@ -19,9 +19,6 @@ char *get_my_path(char **com)
         char *command_path = ft_strjoin(joiner, com[0]);
         free(joiner);
 
-        // if (!command_path) 
-        //     printf("Memory allocation failed\n");
-
         if (access(command_path, X_OK) == 0) 
         {
             mypath = command_path; 
@@ -57,7 +54,6 @@ void execute_command(char **com)
     else if (pid < 0)
     {
         free(path);
-        perror("Fork failed to create a new process");
         return;
     }
     else
@@ -66,3 +62,40 @@ void execute_command(char **com)
     //     free(path);
 
 }
+void ft_pipe(char **com)
+{
+    int fd[2];
+
+    if(pipe(fd) == -1)
+        return ;
+    
+    int pid = fork();
+
+    if(pid == -1)
+        return ;
+    
+    if(pid == 0)
+    {
+        dup2(fd[1], STDOUT_FILENO);
+        close(fd[0]);
+        close(fd[1]);
+        execute_command(&com[1]);
+    }
+
+    int pid2 = fork();
+
+    if(pid2 == -1)
+        return ;
+    if(pid == 0)
+    {
+        dup2(fd[0], STDIN_FILENO);
+        close(fd[0]);
+        close(fd[1]);
+        execute_command(&com[2]);
+    }
+    waitpid(pid,NULL, 0);
+    waitpid(pid2, NULL, 0);
+    close(fd[0]);
+    close(fd[1]);
+}
+
