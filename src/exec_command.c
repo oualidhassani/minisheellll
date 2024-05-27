@@ -44,7 +44,10 @@ void execute_command(char **com)
     int pid;
 
     char *path = get_my_path(com);
+    // dprintf(2,"path %s\n",path);
+    // dprintf(2,"com => %s\n",*com);
     pid = fork();
+    // char *cmds[2] = {path,*com};
     if (pid == 0)
     {
         execve(path, com, myenv);
@@ -74,27 +77,31 @@ void ft_pipe(char **com)
     if(pid == -1)
         return ;
     
+    printf("%s\n", com[0]);
     if(pid == 0)
     {
         dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
-        execute_command(&com[1]);
+        execute_command(&com[0]);
+        // exit(1);
     }
 
     int pid2 = fork();
 
     if(pid2 == -1)
         return ;
+    printf("%s\n", com[2]);
     if(pid == 0)
     {
         dup2(fd[0], STDIN_FILENO);
         close(fd[0]);
         close(fd[1]);
         execute_command(&com[2]);
+        // exit(1);
     }
-    waitpid(pid,NULL, 0);
-    waitpid(pid2, NULL, 0);
+    // waitpid(pid,NULL,1 0);
+    // waitpid(pid2, NULL, 0);
     close(fd[0]);
     close(fd[1]);
 }
