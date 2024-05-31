@@ -6,7 +6,7 @@
 /*   By: ohassani <ohassani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:03:16 by ksohail-          #+#    #+#             */
-/*   Updated: 2024/05/27 18:30:05 by ohassani         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:39:19 by ohassani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,32 +377,18 @@ char *get_my_path(char **com)
     char *mypath = NULL;
     while (str[i]) 
     {
-        if (ft_strchr(com[0], '/') == NULL)
+        char *joiner = join(str[i], "/");
+
+        char *command_path = ft_strjoin(joiner, com[0]);
+        free(joiner);
+
+        if (access(command_path, X_OK) == 0) 
         {
-            char *joiner = join(str[i], "/");
-    
-            char *command_path = ft_strjoin(joiner, com[0]);
-            free(joiner);
-    
-            if (access(command_path, X_OK) == 0) 
-            {
-                mypath = command_path; 
-                break;
-            }
-    
-            free(command_path);
+            mypath = command_path; 
+            break;
         }
-        // else
-        // {
-        //     int h = fork();
-        //     if (h == 0)
-        //     {
-        //         if (access(com[0], X_OK) == 0)
-        //             execve(com[0], com, myenv);
-        //     }
-        //     break;
-            
-        // }
+
+        free(command_path);
         i++;
     }
 
@@ -450,54 +436,50 @@ void execute_command(char **com)
 
 }
 
-//pipes
-
-void ft_pipe(char **com)
+void ft_pipe(t_cmds *lst)
 {
     int fd[2];
     if(pipe(fd) == -1)
-        return ;
+        return;
     
-    int pid = fork();
-    if(pid == -1)
-        return ;
+    int pid1 = fork();
+    if(pid1 == -1)
+        return;
 
-    printf("%s\n", com[0]);
-    printf("%s\n", com[1]);
-    if(pid == 0)
+    if(pid1 == 0)
     {
-        close(fd[0]);
+        close(fd[0]); 
         dup2(fd[1], STDOUT_FILENO);
-        close(fd[1]);
-        execute_command(&com[0]);
-        exit(1);
+        close(fd[1]); 
+        execute_command(&lst->prev->cmd[0]);
+        exit(1); 
     }
-    else if (pid != 0)
-    {
 
-        int pid2 = fork();
-    
-        if(pid2 == -1)
-            return ;
-        // printf("%s\n", com[2]);
+    int pid2 = fork();
+    if(pid2 == -1)
+        return;
+    else if(pid1 != 0)
+    {
         if(pid2 == 0)
         {
             close(fd[1]);
             dup2(fd[0], STDIN_FILENO);
-            close(fd[0]);
-            execute_command(&com[2]);
-            exit(1);
+            close(fd[0]); 
+            execute_command(&lst->next->cmd[0]);
+            exit(1); 
         }
-        close(fd[0]);
-        close(fd[1]);
-        waitpid(pid,NULL, 0);
-        waitpid(pid2, NULL, 0);
     }
+
+    close(fd[0]); 
+    close(fd[1]);
+    waitpid(pid1, NULL, 0);
+    waitpid(pid2, NULL, 0); 
 }
+
+
 
 void executing(t_data *data)
 {
-    // int i = 0;
     if(data->lst->cmd[0] == NULL)
         return ;
     else if(ft_strcmp(data->lst->cmd[0], "cd") == 0)   
@@ -519,7 +501,19 @@ void executing(t_data *data)
     //     else
     //         ft_echo(data->lst->cmd);
     // }
+    // else
+    //     execute_command(data->lst->cmd);
+    // printf("i enter here\n");
     else
-        ft_pipe(data->lst->cmd);
-        // execute_command(data->lst->cmd);
+    {
+        t_cmds *lsts = data->lst;
+        while(lsts)
+        {
+            if(lsts->token == Pipe)
+            {
+                ft_pipe(lsts);
+            }
+            lsts = lsts->next;
+        }
+    }
 }
